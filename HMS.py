@@ -38,7 +38,7 @@ def HMS(nPop, MaxIt, VarMin, VarMax, NVar, F):
     X = initialization(NVar,NPop,VarMin,VarMax); # initialize a population of Npop bids
     X_Star = np.zeros((1,NVar))
     Iter = 0;  # current iteration number
-    Cost_Bid =np.zeros((NPop,1));  # store fitness value for each Bid
+    Cost_Bid =np.zeros((NPop,1))  # store fitness value for each Bid
     Best_Iter=np.zeros((MaxIter,1)) #Best fittness for each Iteration
     X_plus=np.zeros((1,NVar)) #best bid in the current Bids
     Cost_X_Star=np.inf  #the best cost of bids in the initial population
@@ -72,17 +72,17 @@ def HMS(nPop, MaxIt, VarMin, VarMax, NVar, F):
                 S = S.reshape(1,NVar)
                 NS[k,:]=X[i,:]+S;
 
-                MenSearch_Cost[k] = CF(NS[k,:], F);
+                MenSearch_Cost[k] = CF(NS[k,:], F)
                 if MenSearch_Cost[k]< Cost_Bid[i]:
-                  Cost_Bid[i]=  MenSearch_Cost[k]; 
-                  X[i,:]=NS[k,:];
+                  Cost_Bid[i]=  MenSearch_Cost[k]
+                  X[i,:]=NS[k,:]
         
         ### Clustering Current Population
         kmeans = KMeans( init="random", n_clusters=K, n_init=10, max_iter=100, verbose=0)
-        cluster = kmeans.fit(X, K).labels_; 
+        cluster = kmeans.fit(X, K).labels_ 
         
         #MeanCost_Cluster= 100000*ones(C,1); 
-        Winner_Cluster_cost=np.inf;
+        Winner_Cluster_cost=np.inf
         number_in_cluster = np.zeros((K,1))
         
         # Determine the number of members of each cluster
@@ -100,8 +100,8 @@ def HMS(nPop, MaxIt, VarMin, VarMax, NVar, F):
             for i in range(NPop):
                 if cluster[i]==k:
                     counter=counter+1;
-                    Cost_Cluster[k].append(Cost_Bid[i][0]);  
-                    Index_Cluster[k].append(i);
+                    Cost_Cluster[k].append(Cost_Bid[i][0])  
+                    Index_Cluster[k].append(i)
             
         
         
@@ -111,7 +111,7 @@ def HMS(nPop, MaxIt, VarMin, VarMax, NVar, F):
         for k in range(K):
             MeanCost_Cluster[k] = np.mean(Cost_Cluster[k])
             if  MeanCost_Cluster[k]< Winner_Cluster_cost:
-                Winner_Cluster_cost = MeanCost_Cluster[k];
+                Winner_Cluster_cost = MeanCost_Cluster[k]
                 Winner_Cluster=k;
         
         # ind the winning bid
@@ -126,7 +126,7 @@ def HMS(nPop, MaxIt, VarMin, VarMax, NVar, F):
         for i in range(NPop):
             for n in range(NVar):
                 r=np.random.uniform(0,1,1);
-                X[i,n]=X[i,n]+C*(r* Winner_bid[n]-X[i,n]);
+                X[i,n]=X[i,n]+C*(r* Winner_bid[n]-X[i,n])
                 
             Cost_Bid[i] = CF(X[i,:], F);
             if Cost_X_plus > Cost_Bid[i,0]: #% Find best bid in the current population
@@ -138,7 +138,7 @@ def HMS(nPop, MaxIt, VarMin, VarMax, NVar, F):
             Cost_X_Star=Cost_X_plus
             X_Star =X_plus
             
-        Best_Iter[Iter]=Cost_X_Star;
+        Best_Iter[Iter]=Cost_X_Star
         Iter=Iter+1
         print(Cost_X_Star)
         
