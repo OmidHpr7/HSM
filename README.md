@@ -8,5 +8,5 @@ Population-based metaheuristic algorithms have become popular in recent years wi
 Run MainCode.py
 
 
-## Ref:
-[Contribution guidelines for this project](docs/CONTRIBUTING.md)
+## Reference:
+[Implemented article](https://link.springer.com/article/10.1007/s10489-017-0903-6)
