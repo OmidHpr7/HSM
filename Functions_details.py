@@ -1,12 +1,16 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Fri Nov 26 14:29:09 2021
+""" **************************************************************************
+                           Created on 2021
 
-@author: acer
-"""
+                        @author: Omid Hajipoor
+                    Email: hajipoor.omid@aut.ac.ir
+                  Gmail: omid.hajipoor0770@Gmail.com
+************************************************************************** """
+
+
 import numpy as np
 
-def Functions_details(F): #[lb,ub,dim,fobj] 
+def Functions_details(F):
 
     fobj = F
     if F=='F1':
