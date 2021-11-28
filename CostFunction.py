@@ -10,7 +10,7 @@
 import numpy as np
 
 
-def CF(x, F): #[lb,ub,dim,fobj] 
+def CF(x, F): 
 
     if F=='F1':
         o=sum(pow(x,2))
@@ -32,7 +32,7 @@ def CF(x, F): #[lb,ub,dim,fobj]
      #   o=sum(100*(x[1:dim]-pow(pow(x[0:dim-1],2),2))+pow((x[0:dim-1]-1),2))
             
     elif F=='F6':
-        o=sum(pow(abs((x+.5)),2));
+        o=sum(pow(abs((x+.5)),2))
         
         
     '''elif F=='F7':
