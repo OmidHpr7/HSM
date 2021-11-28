@@ -1,9 +1,13 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Fri Nov 26 14:57:56 2021
+""" **************************************************************************
+                           Created on 2021
 
-@author: acer
-"""
+                        @author: Omid Hajipoor
+                    Email: hajipoor.omid@aut.ac.ir
+                  Gmail: omid.hajipoor0770@Gmail.com
+************************************************************************** """
+
+#Human Mental search 
 
 from CostFunction import CF
 from Functions_details import initialization
@@ -49,6 +53,8 @@ def HMS(nPop, MaxIt, VarMin, VarMax, NVar, F):
         
     X_Star = X_Star.reshape(1,NVar) 
     NS=np.zeros((MH, NVar))
+    
+    # Now start the Iteration
     while Iter < MaxIter:
         # Mental Search
         
@@ -70,7 +76,8 @@ def HMS(nPop, MaxIt, VarMin, VarMax, NVar, F):
                 if MenSearch_Cost[k]< Cost_Bid[i]:
                   Cost_Bid[i]=  MenSearch_Cost[k]; 
                   X[i,:]=NS[k,:];
-                  
+        
+        ### Clustering Current Population
         kmeans = KMeans( init="random", n_clusters=K, n_init=10, max_iter=100, verbose=0)
         cluster = kmeans.fit(X, K).labels_; 
         
@@ -78,9 +85,12 @@ def HMS(nPop, MaxIt, VarMin, VarMax, NVar, F):
         Winner_Cluster_cost=np.inf;
         number_in_cluster = np.zeros((K,1))
         
+        # Determine the number of members of each cluster
         for i in range(NPop):
             number_in_cluster[cluster[i]]= number_in_cluster[cluster[i]] + 1
-            
+        
+        
+        # Initialization cluster
         Cost_Cluster = {}
         Index_Cluster = {}
         for k in range(K):
@@ -94,6 +104,8 @@ def HMS(nPop, MaxIt, VarMin, VarMax, NVar, F):
                     Index_Cluster[k].append(i);
             
         
+        
+        ## Evalute Clusters and calculate the average cost of each cluster and find the winning cluster
         MeanCost_Cluster = np.zeros((K,1))
         
         for k in range(K):
@@ -102,13 +114,15 @@ def HMS(nPop, MaxIt, VarMin, VarMax, NVar, F):
                 Winner_Cluster_cost = MeanCost_Cluster[k];
                 Winner_Cluster=k;
         
-        
+        # ind the winning bid
         point=np.argmin(Cost_Cluster[Winner_Cluster])
         ind = Index_Cluster[Winner_Cluster]
         Winner_index= ind[point]
         Winner_bid=X[Winner_index,:]
         
         
+        '''  *************************************************************************************** '''
+        # Moving bids toward the best strategy
         for i in range(NPop):
             for n in range(NVar):
                 r=np.random.uniform(0,1,1);
