@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Fri Nov 26 14:26:00 2021
+""" **************************************************************************
+                           Created on 2021
+                        @author: Omid Hajipoor
+                    Email: hajipoor.omid@aut.ac.ir
+                  Gmail: omid.hajipoor0770@Gmail.com
+************************************************************************** """
 
-@author: acer
-"""
 
 from Functions_details import Functions_details
 from HMS import HMS
@@ -15,10 +17,8 @@ VarMin,VarMax,nVar,CostFunction=Functions_details(Function_name);
 #Set General Params
 MaxIt =500;
 nPop  =30 ;
-
-
-
 MaxRun=2;
+
 
 results = []
 for r in range(MaxRun):
@@ -26,5 +26,6 @@ for r in range(MaxRun):
     print(' Start of  \n',r)
     print('====================================================')
     
+    # Run Optimization Algorithms BGWO1
     Out_HMS = HMS(nPop, MaxIt,VarMin,VarMax,nVar,CostFunction)
     results.append((Out_HMS))
