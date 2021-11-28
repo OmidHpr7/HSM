@@ -1,4 +1,5 @@
-# HSM
+# HMS
+The First python code for:
 Human mental search: a new population-based metaheuristic optimization algorithm
 
 ## Abstract
