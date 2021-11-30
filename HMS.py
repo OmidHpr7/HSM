@@ -142,7 +142,7 @@ def HMS(nPop, MaxIt, VarMin, VarMax, NVar, F):
         Iter=Iter+1
         print(Cost_X_Star)
         
-    X_Star = X_Star.reshape(NVar, 1)
-    return CF(X_Star, F)
+
+    return Cost_X_Star
 
             
