@@ -61,6 +61,18 @@ def CF(x, F): #[lb,ub,dim,fobj]
         dim = Le[0]
         temp =  list(range(1, dim+1))
         o = (sum(pow(x,2))/4000)-np.prod(np.cos(x/np.sqrt(temp)))+1
+        
+    elif F=='F12':
+        Le = x.shape
+        dim = Le[0]
+        o=((np.pi/dim)*((10*(pow((np.sin(np.pi*(1+((x[0]+1)/4)))), 2)))+(sum((pow(((x[0:dim-1]+1)/4),2))*(1+(10*pow((np.sin(np.pi*(1+((x[1:dim]+1)/4)))),2)))))+(pow(((x[dim-1]+1)/4),2))))+(sum(Ufun(x,10,100,4)))
+
+        
+    elif F=='F13':
+        Le = x.shape
+        dim = Le[0]
+        o = (0.1 * ( (pow(np.sin(3*np.pi*x[0]) , 2)) + (sum( (pow((x[0:dim-1]-1), 2)) * (pow( (1+(np.sin(3*np.pi*x[1:dim]))) , 2)) )) + ( (pow((x[dim-1]-1),2)) * (1+pow( np.sin(2*np.pi*x[dim-1]) , 2)) ))) + (sum(Ufun(x,5,100,4)))
+        
                 
     
     return o
