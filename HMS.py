@@ -142,10 +142,7 @@ def HMS(nPop, MaxIt, VarMin, VarMax, NVar, F):
         Iter=Iter+1
         print(Cost_X_Star)
         
-    ret = CF(X_Star, F)
-    if type(ret) == np.ndarray:
-        return sum(ret)
-    else:
-        return ret
+    X_Star = X_Star.reshape(NVar, 1)
+    return CF(X_Star, F)
 
             
