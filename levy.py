@@ -11,7 +11,7 @@ import numpy as np
 
 def lv(n,m,beta):
 
-    # This function implements Levy's flight. 
+# This function implements Levy's flight. 
 # For more information see 
 # Input parameters
 # n     -> Number of steps 
