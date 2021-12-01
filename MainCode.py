@@ -10,14 +10,14 @@
 from Functions_details import Functions_details
 from HMS import HMS
 
-Function_name='F1';
-VarMin,VarMax,nVar,CostFunction=Functions_details(Function_name);
+Function_name = 'F1';
+VarMin,VarMax,nVar,CostFunction = Functions_details(Function_name);
 
 
 #Set General Params
-MaxIt =500;
-nPop  =30 ;
-MaxRun=2;
+MaxIt  = 500;
+nPop   = 30 ;
+MaxRun = 2;
 
 
 results = []
