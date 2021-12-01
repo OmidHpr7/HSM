@@ -10,7 +10,7 @@
 from Functions_details import Functions_details
 from HMS import HMS
 
-Function_name='F6';
+Function_name='F1';
 VarMin,VarMax,nVar,CostFunction=Functions_details(Function_name);
 
 
